@@ -1,0 +1,217 @@
+Question1.
+
+package supermarket;
+
+import java.util.Scanner;
+
+public class Supermarket {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+       
+        System.out.print("Enter the number of different items: ");
+        int numberOfItems = sc.nextInt();
+        sc.nextLine();
+
+        String[] itemNames = new String[numberOfItems];
+        double[] pricePerUnit = new double[numberOfItems];
+        int[] quantity = new int[numberOfItems];
+        double[] subtotal = new double[numberOfItems];
+
+        double totalBill = 0.0;
+
+        for (int i = 0; i < numberOfItems; i++) {
+            System.out.println("\nItem " + (i + 1) + " details:");
+
+            System.out.print("Enter item name: ");
+            itemNames[i] = sc.nextLine();
+
+            System.out.print("Enter price per unit: ");
+            pricePerUnit[i] = sc.nextDouble();
+
+            System.out.print("Enter quantity: ");
+            quantity[i] = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            subtotal[i] = pricePerUnit[i] * quantity[i];
+            totalBill += subtotal[i];
+        }
+
+        double discount = 0.0;
+        if (totalBill > 50000) {
+            discount = totalBill * 0.05;
+        }
+        double finalAmount = totalBill - discount;
+
+        System.out.println("\n========== RECEIPT ==========");
+        System.out.println("Item\t\tQty\tUnit Price\tSubtotal");
+        System.out.println("---------------------------------------------");
+
+        for (int i = 0; i < numberOfItems; i++) {
+            System.out.println(itemNames[i] + "\t\t" 
+                    + quantity[i] + "\t" 
+                    + pricePerUnit[i] + "\t\t" 
+                    + subtotal[i]);
+        }
+
+        System.out.println("---------------------------------------------");
+        System.out.println("Grand Total: " + totalBill);
+        System.out.println("Discount: " + discount);
+        System.out.println("Final Amount Payable: " + finalAmount);
+        System.out.println("===============================");
+
+        sc.close();
+    }
+}
+
+
+
+Question 2.
+ 
+
+package studentgrading;
+
+import java.util.Scanner;
+
+public class StudentGradingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int totalStudents = 0;
+        int passes = 0;
+        int fails = 0;
+
+        while (true) {
+            System.out.print("Enter student's marks (0-100) or -1 to stop: ");
+            int marks = sc.nextInt();
+
+            if (marks == -1) { 
+                break;
+            }
+
+            if (marks < 0 || marks > 100) {
+                System.out.println("Invalid marks! Please enter a value between 0 and 100.");
+                continue; 
+            }
+
+            totalStudents++;
+
+            
+            if (marks >= 80) {
+                System.out.println("Grade: A");
+                passes++;
+            } else if (marks >= 70) {
+                System.out.println("Grade: B");
+                passes++;
+            } else if (marks >= 60) {
+                System.out.println("Grade: C");
+                passes++;
+            } else if (marks >= 50) {
+                System.out.println("Grade: D");
+                passes++;
+            } else {
+                System.out.println("Grade: F");
+                fails++;
+            }
+        }
+
+       
+        double passRate = 0;
+        if (totalStudents > 0) {
+            passRate = ((double) passes / totalStudents) * 100;
+        }
+
+        passRate = Math.round(passRate * 100.0) / 100.0;
+
+        
+        System.out.println("\n========== CLASS SUMMARY ==========");
+        System.out.println("Total Students: " + totalStudents);
+        System.out.println("Passed: " + passes);
+        System.out.println("Failed: " + fails);
+        System.out.println("Pass Rate: " + passRate + "%");
+        System.out.println("==================================");
+
+        sc.close();
+    }
+}
+
+
+
+Question 3.
+
+
+package attendance;
+
+import java.util.Scanner;
+
+public class ClassAttendanceTracker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+      
+        System.out.print("Enter total number of students in the class: ");
+        int totalStudents = sc.nextInt();
+
+     
+        int[] attendance = new int[30];
+        int dayCount = 0;
+
+        String choice = null;
+
+  
+        do {
+            if (dayCount >= 30) {
+                System.out.println("Maximum of 30 days reached!");
+                break;
+            }
+
+            System.out.print("Enter number of students present for Day " + (dayCount + 1) + ": ");
+            int present = sc.nextInt();
+
+          
+            if (present < 0 || present > totalStudents) {
+                System.out.println("Invalid number! It must be between 0 and " + totalStudents);
+                continue; 
+            }
+
+            attendance[dayCount] = present;
+            dayCount++;
+
+            System.out.print("Do you want to enter attendance for another day? (yes/no): ");
+            choice = sc.next();
+
+        } while (choice.equalsIgnoreCase("yes"));
+
+      
+        int totalAttendance = 0;
+        int lowAttendanceDays = 0;
+
+   
+        for (int i = 0; i < dayCount; i++) {
+            totalAttendance += attendance[i];
+            if (attendance[i] < (totalStudents / 2.0)) {
+                lowAttendanceDays++;
+            }
+        }
+
+       
+        double averageAttendance = (dayCount > 0) ? (double) totalAttendance / dayCount : 0;
+        double lowAttendancePercentage = (dayCount > 0) ? ((double) lowAttendanceDays / dayCount) * 100 : 0;
+
+       
+        System.out.println("\n========== ATTENDANCE REPORT ==========");
+        System.out.println("Day\tNumber Present");
+        System.out.println("------------------------");
+        for (int i = 0; i < dayCount; i++) {
+            System.out.println((i + 1) + "\t" + attendance[i]);
+        }
+        System.out.println("------------------------");
+        System.out.println("Average Attendance: " + averageAttendance);
+        System.out.println("Days with Low Attendance (<50%): " + lowAttendanceDays);
+        System.out.println("Low Attendance Percentage: " + Math.round(lowAttendancePercentage * 100.0) / 100.0 + "%");
+        System.out.println("=====================================");
+
+        sc.close();
+    }
+}
+
