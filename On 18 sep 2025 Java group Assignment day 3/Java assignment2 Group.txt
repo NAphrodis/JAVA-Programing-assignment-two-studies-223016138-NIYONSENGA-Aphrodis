@@ -1,0 +1,326 @@
+on 18,Sep,2025
+Group Member: 1. NIYONSENGA Aphrodis      223016138
+              2. ISHIMWE Valens           223003261
+              3. NIYIKIZA Emmanuel        223009090
+              4. TUYUBAHE Nicodeme         223004798
+              5. IRADUKUNDA Olivie         223011139
+
+
+
+Question1. Rectangle Area Calculator
+
+package rectanglearea;
+
+import java.util.Scanner;
+
+public class Rectangle {
+    double length;
+    double width;
+
+  
+    public double calculateArea(double length, double width) {
+        return length * width;
+    	
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+     
+        System.out.print("Enter value of length: ");
+        double l = sc.nextDouble();
+
+        System.out.print("Enter value of width: ");
+        double w = sc.nextDouble();
+
+      
+        Rectangle rect = new Rectangle();
+        double area = rect.calculateArea(l, w);
+
+        if (l == w) {
+            System.out.println("Rectangle is a square.");
+        } else {
+            System.out.println("Rectangle is NOT a square.");
+        }
+
+        System.out.println("Area of rectangle = " + area);
+
+        sc.close();
+    }
+}
+
+
+
+
+	Question 2. Circle Area with Switch Menu
+
+
+package rectanglearea;
+
+import java.util.Scanner;
+
+public class Circle {
+    double radius;
+
+    public double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    public double calculateCircumference(double radius) {
+        return 2 * Math.PI * radius;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter radius of the circle: ");
+        double r = sc.nextDouble();
+
+       
+        Circle c = new Circle();
+
+       
+        System.out.println("Choose an option:");
+        System.out.println("1. Calculate Area");
+        System.out.println("2. Calculate Circumference");
+
+        System.out.print("Enter your choice (1 or 2): ");
+        int choice = sc.nextInt();
+
+        // Switch case for menu selection
+        switch (choice) {
+            case 1:
+                double area = c.calculateArea(r);
+                System.out.println("Area of circle = " + area);
+                break;
+
+            case 2:
+                double circumference = c.calculateCircumference(r);
+                System.out.println("Circumference of circle = " + circumference);
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please choose 1 or 2.");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+Question 3.  Multiple Shapes with For Loop 
+
+
+
+
+package multipleshapes;
+
+import java.util.Scanner;
+
+public class Rectangle {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+
+    public double calculateArea() {
+        return length * width;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
+        Rectangle[] rectangles = new Rectangle[3];
+
+     
+        for (int i = 0; i < rectangles.length; i++) {
+            System.out.println("Enter dimensions for Rectangle " + (i + 1) + ":");
+
+            System.out.print("Length: ");
+            double l = sc.nextDouble();
+
+            System.out.print("Width: ");
+            double w = sc.nextDouble();
+
+ 
+            rectangles[i] = new Rectangle(l, w);
+        }
+
+       
+        System.out.println("\n=== AREAS OF RECTANGLES ===");
+        for (int i = 0; i < rectangles.length; i++) {
+            System.out.println("Rectangle " + (i + 1) + " Area = " + rectangles[i].calculateArea());
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+Question 4.    Shape Chooser with Switch and OOP
+
+
+
+package shapechooser;
+
+import java.util.Scanner;
+
+class Rectangle {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+class Circle {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+
+public class ShapeChooser {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Choose a shape:");
+        System.out.println("1. Rectangle");
+        System.out.println("2. Circle");
+        System.out.print("Enter your choice (1 or 2): ");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter length: ");
+                double length = sc.nextDouble();
+
+                System.out.print("Enter width: ");
+                double width = sc.nextDouble();
+
+                Rectangle rect = new Rectangle(length, width);
+                System.out.println("Area of Rectangle = " + rect.calculateArea());
+                break;
+
+            case 2:
+                System.out.print("Enter radius: ");
+                double radius = sc.nextDouble();
+
+                Circle circle = new Circle(radius);
+                System.out.println("Area of Circle = " + circle.calculateArea());
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please select 1 or 2.");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+Question 5.   Comparing Shapes with If Condition
+
+
+
+package compareShapes;
+
+import java.util.Scanner;
+
+
+class Rectangle {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+class Circle {
+    double radius;
+
+    Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+
+public class CompareShapes {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
+        System.out.print("Enter length of rectangle: ");
+        double length = sc.nextDouble();
+
+        System.out.print("Enter width of rectangle: ");
+        double width = sc.nextDouble();
+
+ 
+        System.out.print("Enter radius of circle: ");
+        double radius = sc.nextDouble();
+
+
+        Rectangle rect = new Rectangle(length, width);
+        Circle circle = new Circle(radius);
+
+
+        double rectArea = rect.calculateArea();
+        double circleArea = circle.calculateArea();
+
+ 
+        System.out.println("\n=== AREAS ===");
+        System.out.println("Rectangle Area = " + rectArea);
+        System.out.println("Circle Area = " + circleArea);
+
+
+        if (rectArea > circleArea) {
+            System.out.println("The Rectangle has the bigger area.");
+        } else if (circleArea > rectArea) {
+            System.out.println("The Circle has the bigger area.");
+        } else {
+            System.out.println("Both shapes have equal area.");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+
+
